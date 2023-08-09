@@ -13,8 +13,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 
+
 namespace TableTopRPG
 {
+    /// <summary>
+    /// The main form when creating a table top character
+    /// </summary>
     public partial class frmCharacterSheet : Form
     {
 
@@ -117,6 +121,7 @@ namespace TableTopRPG
             OpenForm(new frmAlignment(), txtAlignment);
         }
 
+       
         private void btnPickRace_Click(object sender, EventArgs e)
         {
             // lboFeaturesTraits.Items.Clear();
@@ -231,11 +236,16 @@ namespace TableTopRPG
             {
                 string[] alignmentData = data.Split('|');
                 txtAlignment.Text = alignmentData[1];
-
             }
 
         }
 
+        /// <summary>
+        /// Checks off the skills and adds values to the corresponding skills
+        /// based on class choice
+        /// </summary>
+        /// <param name="checkBoxName"></param>
+        /// <param name="checkBoxValue"></param>
         private void checkSkills(string checkBoxName, string checkBoxValue)
         {
             CheckBox checkBox = (CheckBox)this.Controls.Find(checkBoxName.ToString(), true)[0];
@@ -250,6 +260,10 @@ namespace TableTopRPG
 
         }
 
+        /// <summary>
+        /// Adjusting stats based on race choice
+        /// </summary>
+        /// <param name="raceName"></param>
         private void racialStatAdditions(string raceName)
         {
 
@@ -405,6 +419,9 @@ namespace TableTopRPG
             ClearBoxes();
         }
 
+        /// <summary>
+        ///  Clearing values from the form
+        /// </summary>
         private void btnClearValues_Click(object sender, EventArgs e)
         {
             ClearBoxes();
